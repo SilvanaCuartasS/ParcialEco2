@@ -84,7 +84,7 @@ const resetGame = () => {
 const updateScore = (socketId, delta) => {
   const player = findPlayerById(socketId);
   if (player) {
-    player.score = (player.score || 0) + delta;
+    player.score = (player.score || 0) + delta; //suma los puntos
     return player;
   }
   return null;

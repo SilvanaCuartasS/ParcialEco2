@@ -24,4 +24,8 @@ export default function renderScreen1() {
       `;
     });
   });
+
+  socket.on("gameWinner", (data) => {
+  navigateTo("/screen2", data);
+});
 }
