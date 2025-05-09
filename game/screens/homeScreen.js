@@ -16,14 +16,16 @@ export default function renderHomeScreen() {
   const nicknameInput = document.getElementById("nickname");
   const joinButton = document.getElementById("join-button");
 
+  // Al hacer click en el boton hace...
   joinButton.addEventListener("click", async () => {
     const userName = nicknameInput.value;
+
+    // Esta linea solo verifica si hay un valor en el input, sino sale el alert
     if (!userName.trim()) {
       alert("Please enter a nickname");
       return;
     }
 
-    // Instead of emitting, make an API request
     const result = await makeRequest("/api/game/join", "POST", {
       nickname: userName,
       socketId: socket.id,

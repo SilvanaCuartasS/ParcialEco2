@@ -9,7 +9,9 @@ function clearScripts() {
   document.getElementById("app").innerHTML = "";
 }
 
+
 let route = { path: "/", data: {} };
+
 renderRoute(route);
 
 function renderRoute(currentRoute) {
@@ -43,7 +45,7 @@ function navigateTo(path, data) {
 
 async function makeRequest(url, method, body) {
   try {
-    const BASE_URL = "http://localhost:5050";
+    const BASE_URL = "http://localhost:5069";
     let response = await fetch(`${BASE_URL}${url}`, {
       method: method,
       headers: {

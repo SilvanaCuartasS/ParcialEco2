@@ -1,6 +1,8 @@
 import { navigateTo, socket, makeRequest } from "../app.js";
 
 export default function renderLobbyScreen(data) {
+  // data = nickname: userName, players: result.players, score = 0
+
   const app = document.getElementById("app");
   app.innerHTML = `
     <div id="lobby-screen">
@@ -18,7 +20,7 @@ export default function renderLobbyScreen(data) {
 
   usersCount.innerHTML = data?.players.length || 0;
 
-  // Keep the socket.on listeners for receiving events
+  // Cambia el número de jugadores en tiempo real
   socket.on("userJoined", (data) => {
     console.log(data);
     usersCount.innerHTML = data?.players.length || 0;

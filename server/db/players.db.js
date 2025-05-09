@@ -21,7 +21,7 @@ const getAllPlayers = () => {
  * @returns {Object} The created player
  */
 const addPlayer = (nickname, socketId) => {
-  const newPlayer = { id: socketId, nickname };
+  const newPlayer = { id: socketId, nickname, score: 0 };
   players.push(newPlayer);
   return newPlayer;
 };
@@ -41,6 +41,7 @@ const findPlayerById = (socketId) => {
  */
 const assignPlayerRoles = () => {
   const playersWithRoles = assignRoles(players);
+
   // Update the players array with the new values
   players.splice(0, players.length, ...playersWithRoles);
   return players;
@@ -74,6 +75,28 @@ const resetGame = () => {
   players.splice(0, players.length);
 };
 
+/**
+ * Update player's score
+ * @param {string} socketId - Player's socket ID
+ * @param {number} delta - Points to add (can be negative)
+ * @returns {Object|null} Updated player or null if not found
+ */
+const updateScore = (socketId, delta) => {
+  const player = findPlayerById(socketId);
+  if (player) {
+    player.score = (player.score || 0) + delta;
+    return player;
+  }
+  return null;
+};
+
+function clearScores() {
+  players.forEach((player) => {
+    player.score = 0;
+    player.role = null; // también puedes limpiar el rol si lo deseas
+  });
+}
+
 module.exports = {
   getAllPlayers,
   addPlayer,
@@ -82,4 +105,6 @@ module.exports = {
   findPlayersByRole,
   getGameData,
   resetGame,
+  updateScore,
+  clearScores,
 };

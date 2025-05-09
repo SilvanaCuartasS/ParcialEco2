@@ -3,6 +3,10 @@ import renderScreen2 from "./screens/screen2.js";
 
 const socket = io("/", { path: "/real-time" });
 
+socket.on("gameWinner", (data) => {
+  navigateTo("/screen2", data);
+});
+
 function clearScripts() {
   document.getElementById("app").innerHTML = "";
 }
@@ -26,9 +30,33 @@ function renderRoute(currentRoute) {
   }
 }
 
+async function makeRequestScreen2(url, method, body) {
+  try {
+    const BASE_URL = "http://localhost:5069";
+    let response = await fetch(`${BASE_URL}${url}`, {
+      method: method,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error("API request failed:", error);
+    // Return a failed response object that can be checked by callers
+    return { success: false, error: error.message };
+  }
+}
+
 function navigateTo(path, data) {
   route = { path, data };
   renderRoute(route);
 }
 
-export { navigateTo, socket };
+export { navigateTo, socket, makeRequestScreen2 };
