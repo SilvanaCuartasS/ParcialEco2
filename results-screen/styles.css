@@ -92,6 +92,42 @@
   background-color: #fff;
 }
 
+#sort-alpha {
+  margin-top: 2rem;
+  padding: 0.8rem 1.6rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 12px;
+  background-color: #ffffffcc;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  animation: fadeIn 1s ease-out 0.9s;
+  animation-fill-mode: both;
+}
+
+#sort-alpha:hover {
+  background-color: #fff;
+}
+
+#reset-btn {
+  margin-top: 2rem;
+  padding: 0.8rem 1.6rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 12px;
+  background-color: #ffffffcc;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  animation: fadeIn 1s ease-out 0.9s;
+  animation-fill-mode: both;
+}
+
+#reset-btn:hover {
+  background-color: #fff;
+}
+
 @keyframes slideInFromRight {
   from {
     transform: translateX(100vw);
