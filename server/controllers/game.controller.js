@@ -151,11 +151,12 @@ const selectPolo = async (req, res) => {
   }
 };
 
-const restartGame = async (req, res) => {
-  try {
-    playersDb.clearScores(); // Deberás agregar esta función al db si no existe
 
-    emitEvent("gameRestarted"); // Avisamos a todos que el juego fue reiniciado
+const resetGame = async (req, res) => {
+  try {
+    playersDb.resetGame();
+
+    emitEvent("resetGame", {}); 
 
     res.status(200).json({ success: true });
   } catch (err) {
@@ -169,5 +170,5 @@ module.exports = {
   notifyMarco,
   notifyPolo,
   selectPolo,
-  restartGame,
+  resetGame,
 };

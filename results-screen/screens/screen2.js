@@ -20,9 +20,12 @@ export default function renderScreen2(data) {
 
       <button id="sort-alpha">Ordenar alfabéticamente</button>
       <button id="go-screen-back">Volver al inicio</button>
+      <button id="reset-btn">Reiniciar Juego</button>
 
     </div>
   `;
+
+  const resetButton = document.getElementById("reset-btn");
 
   document.getElementById("go-screen-back").addEventListener("click", () => {
     navigateTo("/");
@@ -44,4 +47,9 @@ export default function renderScreen2(data) {
       )
       .join("");
   }
+
+  resetButton.addEventListener("click", async () => {
+    await makeRequestScreen2("/api/game/reset-game", "POST");
+    navigateTo("/"); 
+  });
 }
