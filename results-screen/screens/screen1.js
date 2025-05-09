@@ -19,9 +19,8 @@ export default function renderScreen1() {
     
     players.forEach((player) => {
       nowPlayers.innerHTML += `
-        <p>${player.nickname} | Rol: ${
-        player.role ?? "sin asignar"
-      } | Puntos: ${player.score ?? 0}</p>
+        <p>${player.nickname} 
+        Puntos: ${player.score ?? 0}</p>
       `;
     });
   });
