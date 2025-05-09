@@ -1,5 +1,9 @@
 /* screen1.css */
 
+*{
+  font-family: "Arial", sans-serif;
+}
+
 #screen1 {
   animation: slideInFromLeft 0.6s ease-out;
   background: linear-gradient(to right, #c6ffdd, #fbd786, #f7797d);

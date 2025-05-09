@@ -8,6 +8,6 @@ router.post('/start', gameController.startGame);
 router.post('/marco', gameController.notifyMarco);
 router.post('/polo', gameController.notifyPolo);
 router.post('/select-polo', gameController.selectPolo);
-router.post("/restart", gameController.restartGame); 
+router.post("/reset-game", gameController.resetGame);
 
 module.exports = router;
