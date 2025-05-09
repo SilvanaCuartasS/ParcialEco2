@@ -19,7 +19,6 @@ export default function renderScreen2(data) {
       </ol>
 
       <button id="sort-alpha">Ordenar alfabéticamente</button>
-      <button id="go-screen-back">Volver al inicio</button>
       <button id="reset-btn">Reiniciar Juego</button>
 
     </div>
@@ -27,9 +26,6 @@ export default function renderScreen2(data) {
 
   const resetButton = document.getElementById("reset-btn");
 
-  document.getElementById("go-screen-back").addEventListener("click", () => {
-    navigateTo("/");
-  });
 
   document.getElementById("sort-alpha").addEventListener("click", () => {
     const sorted = [...data.rankedPlayers].sort((a, b) =>
